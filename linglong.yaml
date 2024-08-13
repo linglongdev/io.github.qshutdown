@@ -1,0 +1,29 @@
+version: "1"
+
+package:
+  id: io.github.qshutdown
+  name: qshutdown
+  version: 0.1.8.1
+  kind: app
+  description: |
+    qshutdown for timebased shutdown/reboot/suspend/hibernate
+
+command:
+  - /opt/apps/io.github.qshutdown/files/bin/qshutdown
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/hakaishi/shutdown-qapps.git
+    version: master
+    commit: 7e66df2c15a08186414e161884e55960c85f6d43
+
+build: |
+  cd /project/linglong/sources/shutdown-qapps.git
+  git apply ../../../0001-install.patch
+  git apply ../../../0002-install.patch
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make
+  make install

@@ -1,0 +1,37 @@
+From 397163ca2cce19ba3816813272595ec3d6bbe48a Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Thu, 8 Aug 2024 14:30:24 +0800
+Subject: [PATCH] install
+
+---
+ qshutdown/qshutdown.pro | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/qshutdown/qshutdown.pro b/qshutdown/qshutdown.pro
+index ff5cb8d..57d37d2 100644
+--- a/qshutdown/qshutdown.pro
++++ b/qshutdown/qshutdown.pro
+@@ -66,15 +66,15 @@ FORMS = src/ui/gui.ui src/ui/preferences.ui\
+ 
+ linux{
+ # install
+-target.path = /usr/bin
++target.path = $$PREFIX/bin
+ icon.files = src/pixmap/red_glasses.xpm
+-icon.path = /usr/share/icons/hicolor/32x32/apps
++icon.path = $$PREFIX/share/icons/hicolor/32x32/apps
+ translation.files = src/translations/*.qm
+-translation.path = /usr/share/qshutdown/translations
++translation.path = $$PREFIX/share/qshutdown/translations
+ autostart1.files = autostart/qshutdown.desktop
+-autostart1.path = /usr/share/applications
++autostart1.path = $$PREFIX/share/applications
+ autostart2.files = autostart/99qshutdown
+-autostart2.path = /usr/share/qshutdown/autostart
++autostart2.path = $$PREFIX/share/qshutdown/autostart
+ 
+ INSTALLS = target icon translation autostart1 autostart2
+ 
+-- 
+2.43.4
+
